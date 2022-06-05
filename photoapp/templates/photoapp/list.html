@@ -1,0 +1,67 @@
+<!-- photoapp/templates/photoapp/list.html -->
+
+{% extends 'base.html' %}
+<!-- {% load static %} -->
+{% block body %}
+
+
+
+
+
+
+
+<div class="row">
+  {% for photo in photos %}
+  <div class="imge col-lg-3 col-md-4 col-xs-6">
+    <a href="{% url 'photo:detail' photo.id %}" class=" d-block mb-4 h-100">
+      <img src="{{photo.image.url}}" class="img-fluid rounded" alt="{{photo.title}}" />
+    </a>
+  </div>
+  {% endfor %}
+</div>
+
+
+<!-- {%block javascript%} -->
+
+<script src="{% static 'js/app.js' %}"></script>
+
+<!-- <script>
+
+  function searchPhoto() {
+    console.log('helo');
+
+
+    // const searchField = document.getElementById("serach-field");
+    // const searchText = searchField.value;
+
+    let searchBox = document.querySelector('#search-box');
+    let images = document.querySelectorAll('.row .imge .imgee');
+
+    searchBox.oninput = () => {
+      images.forEach(hide => hide.style.display = 'none');
+      let value = searchBox.value;
+      images.forEach(filter => {
+        let title = filter.getAttribute('data-title');
+        if (value == title) {
+          filter.style.display = 'block';
+        }
+        if (searchBox.value == '') {
+          filter.style.display = 'block';
+        }
+      });
+    };
+
+
+
+
+  }
+
+</script> -->
+
+
+
+<!-- {% endblock %} -->
+
+
+
+{% endblock body %}
